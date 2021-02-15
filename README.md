@@ -9,7 +9,7 @@ Remove the `auth.isUserLogged` property from `App.vue`, use a store getter to ch
 
 2. Remove `inject` from `LoginForm.vue`. Write `login` commit to set `auth.isUserLogged` to **true**. 
 
-4. Remove `inject`from `TheNavigation.vue`. Create a getter in store/index.js with the name `isUserLogged` to perform the same action.
+4. Remove `inject`from `TheNavigation.vue`. Create or reuse a mutation in store/index.js to perform the **LogOut** functionality.
 
 5. Remove `inject`from `TodoList.vue`. Use a getter for `todo` and `isUserLogged`. Write a commit to perform the `remove todo` functionality.
   
