@@ -2,7 +2,7 @@
 
 ## Exercise N°9
 
-0. Install all dependencies and the vuex dependency.
+0. Install all dependencies and the vuex dependency. Execute the program as it is and try to understand the full funcionality; and what are the purpouse of "inject" and "provide" properties. Also, how the custom events are used.
 
 1. Fill the `src/store/index.js` with a global store to handle user `login` state.
 Remove the `auth.isUserLogged` property from `App.vue`, use a store getter to check if you user is connected.
