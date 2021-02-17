@@ -30,23 +30,18 @@ hacen a nivel de modificación de la estructra de los datos. "AddElementToList",
 
 ## Exercise N°9
 
+0. Install all dependencies and the vuex dependency. Execute the program as it is and try to understand the full funcionality; and what are the purpouse of "inject" and "provide" properties. Also, how the custom events are used.
+
 1. Fill the `src/store/index.js` with a global store to handle user `login` state.
-Add 3 files : `mutations.js`, `getters.js`, `action.js` into `src/store`.
-Add 2 actions : `login` and `logout`.
 Remove the `auth.isUserLogged` property from `App.vue`, use a store getter to check if you user is connected.
 
-2. Refactor the `todos` data array inside `App.vue` into a specific store module `src/store/todos`.
-The folder `src/store/todos` must contain an `index.js`, `mutations.js`, `getters.js`, `action.js` files.
-You will have 2 actions : `addTodo` and `removeTodo`.
-Remove the `todos` property from `App.vue`, user a store getter to get your todos.
+2. Remove `inject` from `LoginForm.vue`. Write `login` commit to set `auth.isUserLogged` to **true**. 
 
-3. Remove `inject` from `LoginForm.vue`. Dispatch a `login` action. 
+4. Remove `inject`from `TheNavigation.vue`. Create or reuse a mutation in store/index.js to perform the **LogOut** functionality. Also, use the getter properly to properly display or not the Logout button.
 
-4. Remove `inject`from `TheNavigation.vue`. Use a getter form `isUserLogged`.
-
-5. Remove `inject`from `TodoList.vue`. Use a getter for `todo` and `isUserLogged`. Dispatch a `remove todo` action.
+5. Remove `inject`from `TodoList.vue`. Use a getter for `todo` and `isUserLogged`. Write a commit to perform the `remove todo` functionality.
   
-6. Remove `inject` from `AddTodo.vue`. Use a `isUserLogged`. Dispatch a `add todo` action.
+6. Remove `inject` from `AddTodo.vue`. Use the getter `isUserLogged`. Write a commit to perform the `add todo` functionality.
   
 
 
