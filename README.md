@@ -1,5 +1,33 @@
 # vue3-vuex-exercise
 
+## About Getters, Mutations and Actions
+
+[State]: tenemos el estado de la aplicación. Esto es, que estructura
+tienen los datos. Ejemplo: todos (id, texto), auth (boleano que nos dice
+si estamos logueados o no) etc...Por ejemplo en Tender es posible que auth no
+sea un simple boleano, si no que sea un objeto con info del tipo
+
+auth: {
+   email,
+   fullName,
+   location,
+   ...
+}
+
+[Getters]: Obtiene información de nuestro estado. No accedemos directamente
+a las variables de estado de la app (aunque podamos!). Por ejemplo, va a 
+ser interesante utilizar un getter que nos filtre la lista de animales
+en función de nuestra preferencias.
+
+[Mutations]: Operaciones que modifican directamente el estado de la
+aplicación. Modifica con métodos, programación, etc. el valor de las 
+variables. Por eso es adecuado ponerle nombres que representen lo que
+hacen a nivel de modificación de la estructra de los datos. "AddElementToList",
+"AddNewAnimalToList"
+
+[Actions]: Son "reglas de negocio" que pueden ejecutar varios 'commits' 
+(mutations). Además, son asíncronos,de manera que no bloqueamos al usuario.
+
 ## Exercise N°9
 
 1. Fill the `src/store/index.js` with a global store to handle user `login` state.

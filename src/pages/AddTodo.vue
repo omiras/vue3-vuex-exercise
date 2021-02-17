@@ -5,10 +5,8 @@
   </form>
 </template>
 
-
 <script>
 export default {
-  inject: ["todos", "auth"],
   data() {
     return {
       todo: "",
@@ -18,15 +16,21 @@ export default {
     submitForm() {
       if (this.todo?.trim()) {
         // TODO call add todo action
-        this.todos.push({ id: new Date().toString(), name: this.todo });
+        this.$store.dispatch('addNewTodo', this.todo)
         this.$router.push({ name: "todos" });
       }
     },
   },
   beforeRouteEnter(to, from, next) {
-    next(
-      (vm) => !vm.auth.isUserLogged && vm.$router.replace({ name: "login" })
-    );
+    console.log('to:', to)
+      console.log('from:', from)
+
+    // Si next se ejecuta con un valor 'true' o vació (next()); la app nos va a dirigir exactamente donde queríamos ir en primera instancia 
+    next((vm) => {
+      console.log(vm)
+      // Si isUserLogged es falso, se ejecuta la siguiente instrucción. Que precisamente lo que haces redirigir al usuario a la página de login
+      !vm.$store.getters.isUserLogged && vm.$router.replace({ name: "login" });
+    });
   },
 };
 </script>

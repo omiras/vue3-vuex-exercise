@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!todos.length">
+  <div v-if="isEmptyList">
     <p>
       You have no todo, please create one.
       <router-link to="/add-todo">Add todo</router-link>
@@ -7,7 +7,7 @@
   </div>
   <div v-else>
     <todo-item
-      v-for="todo in todos"
+      v-for="todo in allTodos"
       :key="todo.id"
       :todo="todo"
       @remove-todo="removeTodo"
@@ -19,17 +19,29 @@
 import TodoItem from "../components/UI/TodoItem.vue";
 export default {
   components: { TodoItem },
-  inject: ["todos", "auth"],
+  computed: {
+    isEmptyList() {
+      return this.$store.getters.getAllTodos.length == 0;
+    },
+    allTodos() {
+      return this.$store.getters.getAllTodos;
+    },
+  },
   methods: {
     removeTodo(id) {
-      // TODO call remove todo action
-      const index = this.todos.findIndex((todo) => todo.id === id);
-      this.todos.splice(index, 1);
+      console.log("Remove id: ", id)
+      // TODO remove "todos" from inject and use todo mutation
+      this.$store.dispatch('removeTodo', id)
     },
   },
   beforeRouteEnter(to, from, next) {
     next(
-      (vm) => !vm.auth.isUserLogged && vm.$router.replace({ name: "login" })
+      // Comprobamos si el usuario esta logueado o no
+      // en BeofreRouterEnter todavia NO está creado el componente.
+      // Eso significa que no podemos acceder a "this". Pero claro
+      // que todavía necesitamos acceder al estado de la aplicación, por ejemplo, para comprobar si estamos logueados o no; y en consequencia, dar acceso a la petición del usuario de navegar a la URL '/todos'
+      (vm) =>
+        !vm.$store.getters.isUserLogged && vm.$router.replace({ name: "login" })
     );
   },
 };

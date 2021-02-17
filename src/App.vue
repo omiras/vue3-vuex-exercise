@@ -21,16 +21,15 @@ export default {
         { id: "t1", name: "Todo 1" },
         { id: "t2", name: "Todo 2" },
         { id: "t3", name: "Todo 3" },
-      ],
-      auth: { isUserLogged: false}
+      ]
     };
   },
-  provide() {
-    return {
-      todos: this.todos,
-      auth: this.auth,
-    };
-  },
+  // A veces sucede que una parte del estado lo quieres "propagar" o que sea "accesible" desde toda tu aplicación. 
+  // provide() {
+  //   // return {
+  //   //   todos: this.todos
+  //   // };
+  // },
 };
 </script>
 

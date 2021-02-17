@@ -10,12 +10,13 @@
 
 <script>
 export default {
-  inject: ["auth"],
+  //inject: ["auth"], // inyectar el objeto o variable 'auth' en este componente. Me lo provee App.vue. A esto también se la llama "inyección de dependencias"; porque este componente pasa a ser dependiente de la configuración/estructura de 'auth'
   methods: {
     login() {
-      // TODO call login action.
-      this.auth.isUserLogged = true;
-      this.$router.replace({ name: "todos" });
+
+    //this.auth.isUserLogged = true; // Desde este componente estamos modificando el estado de 'auth' para TODA la aplicación; sin necesidad de usar custom events
+    this.$store.dispatch('login')
+    this.$router.replace({ name: "todos" });
     },
   },
 };
